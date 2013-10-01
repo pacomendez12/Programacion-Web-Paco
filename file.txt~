@@ -1,0 +1,13 @@
+para realizar un archivo .gitignore, el cual nos permitirá indicarle a git que ciertos archivos no sean agregados
+a nuestro repositorio aún cuando hagamos cosas como "git add *", lo cual es muy práctico para evitar agregar
+archivos temporales o con extensiones que no deseamos. 
+
+Simplemente hay que crear un archivo de texto plano en la carpeta raiz de nuestro repositorio con el nombre ".gitignore"
+dentro de ese archivo hay que especificar que archivos habrán de omitirse, por ejemplo:
+
+*.c++
+*~
+*.o
+*.a
+
+etc

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>9
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Sitio</title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link rel="shortcut icon" href="./favicon.ico" />
@@ -20,12 +20,19 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
+		<!--[if lt IE 9]>
+			<link href="css/main-ie.css" rel="stylesheet" type="text/css" />
+		<![endif]-->
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <!--[if lt IE 9]>
+            <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+        <![endif]-->
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
+			<div class="errorI" id="error"><div id="close" class="close"></div></div>
 
 			<aside id="menu-superior">
 				<button class="boton-mini" id="btn_salr">Salir</button>
@@ -35,46 +42,45 @@
 						<li><a href="#">Cursos</a></li>
 						<li><a href="#">Grupos</a></li>
 						<li><a href="#">Calificaciones</a></li>
-						<div class="clear"></div>
 					</ul>
 				</nav>
 			</aside>
 			<div class="clear"></div>
 			<!-- <div id="logo"><img src="img/udg.png" alt="" width="100%" /></div>-->
 			<aside id="menu-izquierdo">
-				<a href="#"><img src="img/casa.png" alt="home" title="Principal" width="40px" /></a>
-				<a href="#"><img src="img/lista.png" alt="lista" title="Listas" width="40px" /></a>
-				<a href="#"><img src="img/grupo.png" alt="grupo" title="Grupos" width="40px" /></a>
-				<a href="#"><img src="img/engrane.png" alt="engrane" title="Configuración" width="40px" /></a>
+				<a href="#"><img src="img/casa.png" alt="home" title="Principal" width="40" /></a>
+				<a href="#"><img src="img/lista.png" alt="lista" title="Listas" width="40" /></a>
+				<a href="#"><img src="img/grupo.png" alt="grupo" title="Grupos" width="40" /></a>
+				<a href="#"><img src="img/engrane.png" alt="engrane" title="Configuración" width="40" /></a>
 			</aside>
 			<section id="contenido">
-				<form method="post" action="#">
+				<form method="post" action="#" id="registro">
 				<div id="contenedor" class="contenedor-mediano">
 					<h2 id="titulo">Registro de alumnos</h2>
 					<div id="cod" class="linea">
 						<label for="codigo">Código:</label>
-						<input id="codigo" type="text" required />
+						<input id="codigo" type="text" />
 						<div class="clear"></div>
 					</div>
-					<div id="nombre" class="linea">
+					<div id="no" class="linea">
 						<label for="no">Nombre(s):</label>
-						<input id="no" type="text" required />
+						<input id="nombre" type="text" />
 						<div class="clear"></div>
 					</div>
 					<div id="apellido" class="linea">
 						<label for="ap">Apellido(s):</label>
-						<input id="ap" type="text" required />
+						<input id="ap" type="text" />
 						<div class="clear"></div>
 					</div>
 					<div id="car"  class="linea">
 						<label for="carrera">Carrera:</label>
-						<input id="carrera" type="text" required />
+						<input id="carrera" type="text" />
 						<div class="clear"></div>
 					</div>
 					
 					<div id="em" class="linea">
 						<label for="correo">E-mail:	</label>
-						<input id="correo" type="email" required />
+						<input id="correo" type="email" />
 						<div class="clear"></div>
 					</div>
 					<hr>
@@ -83,7 +89,7 @@
 					<div id="cel" class="linea">
 						<input type="checkbox" name="activar_celular" value="activar_celular" />
 						<label class="opt" for="celular">Celular:	</label>
-						<input id="celular" type="phone" disabled />
+						<input id="celular" type="text" disabled />
 						<div class="clear"></div>
 					</div>			
 					<div id="cgh" class="linea">
@@ -98,7 +104,7 @@
 						<input id="pagina" type="text" disabled />
 						<div class="clear"></div>
 					</div>		
-					<button id="btn" class="boton" type="submit">Registrar</button>
+					<button id="btn" class="boton" type="button" onclick="validaFormularioRegistro()">Registrar</button>
 					<div class="clear"></div>
 					
 				</div>
@@ -106,6 +112,7 @@
 
 			</section>
 			<div class="clear"></div>
+			
 
 			<footer><span>&copy; 2013 Todos los derechos reservados - Francisco de Jesús Méndez Pelayo</span></footer>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -120,5 +127,7 @@
             g.src='//www.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
+        
+        <script src="js/valida.js"></script>
     </body>
 </html>
