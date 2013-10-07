@@ -32,6 +32,7 @@
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
+            <div class="errorI" id="error"><div id="text-error"></div><div id="close" class="close" onclick="cerrarError()"><img src="img/cerrar.png" alt="cerrar" width="15" /></div></div>
 
 			<aside id="menu-superior">
 				<button class="boton-mini" id="btn_salr">Salir</button>
@@ -52,7 +53,7 @@
 				<a href="#"><img src="img/lista.png" alt="lista" title="Listas" width="40" /></a>
 				<a href="#"><img src="img/engrane.png" alt="engrane" title="Configuración" width="40" /></a>
 			</aside>
-			<section id="contenido">
+			<section id="contenido" class="cbl">
 				<div id="contenedor" class="contenedor-grande">
 					<h3 class="margenes fuente-cursiva fuente-centro" id="titulo" style="display:inline;">Bienvenido: </h3>
 					<h4 class="fuente-cursiva fuente-centro" style="text-decoration: underline;display:inline;">Francisco de Jesús Méndez Pelayo</h4>
@@ -61,7 +62,7 @@
 			</section>
 			<div class="clear"></div>
 
-			<footer><span>&copy; 2013 Todos los derechos reservados - Francisco de Jesús Méndez Pelayo</span></footer>
+			<footer class="espacio"><span>&copy; 2013 Todos los derechos reservados - Francisco de Jesús Méndez Pelayo</span></footer>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>

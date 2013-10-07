@@ -371,8 +371,8 @@ section form div, section form div{
 }
 
 #contenedor div input[type="checkbox"]{
-	width: 50%;
-	margin-right: 5%;
+	width: 5%;
+	margin-right: 3%;
 }
 
 section form div div label{
@@ -639,8 +639,8 @@ aside#menu-izquierdo a:hover{
 
 .close{
 	background-color: white;
-	height: 25px;
-	width: 25px;
+	height: 20px;
+	width: 20px;
 	position: absolute;
 	top: 0%;
 	right: 0%;
