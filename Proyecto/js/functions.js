@@ -1,3 +1,6 @@
+
+
+
 function utf8_encode (argString) {
   // http://kevin.vanzonneveld.net
   // + original by: Webtoolkit.info (http://www.webtoolkit.info/)
