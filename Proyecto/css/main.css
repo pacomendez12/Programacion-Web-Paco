@@ -547,6 +547,7 @@ section form div div label.opt{
 .boton-mini-rojo{
 	float: right;
 	border: none;
+	width: 27px;
 	-moz-border-radius: 10px;
 	-o-border-radius: 10px;
 	-webkit-border-radius: 10px;
@@ -732,7 +733,7 @@ aside#menu-izquierdo a:hover{
 	position: fixed;
 	right: 35px;
 	top: 45px;
-	width: 20%;
+	width: 280px;
 	height: 15%;
 	background-color: #B8000F;
 	color: white;
