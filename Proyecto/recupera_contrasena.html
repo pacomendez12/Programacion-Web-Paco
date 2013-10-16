@@ -8,22 +8,22 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Recuperación de la contraseña</title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <link rel="shortcut icon" href="./favicon.ico" />
-        <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png" />
-        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57-precomposed.png" />
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72-precomposed.png" />
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png" />
+        <link rel="shortcut icon" href="www/img/favicon.ico" />
+        <link rel="apple-touch-icon-precomposed" href="www/img/apple-touch-icon-precomposed.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="www/img/apple-touch-icon-57x57-precomposed.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="www/img/apple-touch-icon-72x72-precomposed.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="www/img/apple-touch-icon-114x114-precomposed.png" />
         
 
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="www/css/normalize.css">
+        <link rel="stylesheet" href="www/css/main.css">
 		<!--[if lt IE 9]>
 			<link href="css/main-ie.css" rel="stylesheet" type="text/css" />
 		<![endif]-->
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="www/js/vendor/modernizr-2.6.2.min.js"></script>
         <!--[if lt IE 9]>
             <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
         <![endif]-->
@@ -32,7 +32,7 @@
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-        <div class="errorI" id="error"><div id="text-error"></div><div id="close" class="close" onclick="cerrarError()"><img src="img/cerrar.png" alt="cerrar" width="15" /></div></div>
+        <div class="errorI" id="error"><div id="text-error"></div><div id="close" class="close" onclick="cerrarError()"><img src="www/img/cerrar.png" alt="cerrar" width="15" /></div></div>
 
 			<aside id="menu-superior">
 
@@ -40,14 +40,14 @@
 			<div class="clear"></div>
 			<!-- <div id="logo"><img src="img/udg.png" alt="" width="100%" /></div>-->
 			<section id="contenido" class="sbl">
-				<form method="post" action="" name="rc" id="rc">
+				<form method="post" action="www.google.com" name="rc" id="rc">
 				<div id="contenedor" class="contenedor-pequenio">
 					<h2 id="titulo">Recuperación de la contraseña</h2>
                     <h5>Ingresa el correo electrónico al cual fue registrada la cuenta (en breve recibirá una mensaje en su bandeja
                         con su nueva contraseña)</h5>
 					<div id="ema" class="linea">
 						<label for="email">E-mail:</label>
-						<input id="email" type="text" name="email" required />
+						<input id="email" type="text" name="email" onkeyDown = "if(event.keyCode == 13) return false;" required >
 						<div class="clear"></div>
 					</div>
 					<div id="clear"></div>
@@ -63,8 +63,8 @@
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+        <script src="www/js/plugins.js"></script>
+        <script src="www/js/main.js"></script>
     
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
@@ -74,7 +74,7 @@
             g.src='//www.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
-        <script src="js/valida.js"></script>
-        <script src="js/functions.js"></script>
+        <script src="www/js/valida.js"></script>
+        <script src="www/js/functions.js"></script>
     </body>
 </html>
