@@ -1,7 +1,10 @@
 <?php
-	$driver = new mysqli('localhost', 'cc409_user106', 'bNLQSfu005', 'cc409_user106');
-	if($driver->connect_errno)
-		die("no se pudo conectar");			
+
+	#$driver = new mysqli('localhost', 'cc409_user106', 'bNLQSfu005', 'cc409_user106');
+	/*$driver = new mysqli('localhost', 'root', 'root','cc409_user106');
+	if($driver->connect_errno){
+		die("no se pudo cnectar");
+	}*/
 	
 	
 	/*recibir variables de la url*/

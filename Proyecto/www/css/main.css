@@ -108,6 +108,7 @@ body{
          -o-user-select: none;
             user-select: none;
             cursor:default;
+    position: relative;
 }
 
 
@@ -188,7 +189,7 @@ aside#menu-izquierdo{
 	width: 60px;
 	height: 100%;
 	/*margin-top: 2.7%;*/
-	top: 0%;
+	/*top: 0%;*/
 	float: left;
 	background-color: #eee;
 	overflow: hidden;
@@ -278,11 +279,13 @@ aside nav ul{
 
 aside nav ul li{
 	float: left;
-	width: 33%;
+	width: 30%;
 	margin-left: 0%;
 	text-align: center;
 	font-weight: bold;
 	list-style-type: none;
+	margin: 0%;
+	padding: 0%;
 }
 
 
@@ -334,7 +337,7 @@ footer{
 	left: 5.9%;
 }
 
-.tabla{
+table.tabla{
 	background-color: #ddd !important; 
 }
 
@@ -635,6 +638,30 @@ a:link{
 	padding: 5px;
 }
 
+
+a:link.normal{
+	color: orange !important;
+	border: none;
+	text-decoration: underline;
+	padding: 0px;	
+}
+
+a.normal{
+	color: orange;
+}
+
+a:hover.normal{
+	color: orange;
+	border:none;
+	background-image: none;
+	-moz-border-radius: 0px;
+	-o-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-ms-border-radius: 0px;	
+	border-radius: 0px;
+}
+
+
 span a:link{/*para el usuario*/
 	background-color: #ddd;
 	-moz-border-radius: 10px;
@@ -796,6 +823,11 @@ aside#menu-izquierdo a:hover{
 	margin-bottom: 5%;
 }
 
+table.tabla{
+	position:  relative;
+	width: 98%;
+	overflow: hidden !important;
+}
 
 /*Media querys*******************************************************************************************/
 @media screen and (min-width: 0px) and (max-width: 599px){
@@ -804,13 +836,14 @@ aside#menu-izquierdo a:hover{
 		margin-left: .6%;
 		margin-top: 4%;
 		width:98%;
-		
 	}
 
 	#contenido{
 		margin-left: .6%;
 		margin-top: 1%;
 		width:98%;
+		margin-bottom: 5%;
+		overflow: scroll;
 	}
 
 	aside#menu-superior{
@@ -819,18 +852,18 @@ aside#menu-izquierdo a:hover{
 
 
 	aside#menu-izquierdo{
-		top: 5.9%;
+		/*top: 5.9%;*/
 		border: none;
-		height: 10%;
+		height: 45px;
 		width: 100%;
 		position: fixed;
-		top: 90%;
-		float: left;
+		/*top: 90%;*/
+		bottom: 0%;
+		/*float: right;*/
 		text-align: center;
-		font-size: .8em;
-   		z-index: 99;
-   		padding: 0%;
-   		margin: 0%;
+   		z-index: 1;
+   		/*padding: 0%;
+   		margin: 0%;*/
 		
 	}
 
@@ -850,7 +883,10 @@ aside#menu-izquierdo a:hover{
 
 
 	footer{
+
 		position: relative;
+		top: 1%;
+		margin-bottom: 15%;
 		width: 100%;
 		z-index: 0;
 		margin-left: 0%;
@@ -939,7 +975,7 @@ aside#menu-izquierdo a:hover{
 	}
 
 	footer{
-		position: relative;
+		position: fixed;
 		width: 100%;
 		z-index: 0;
 		margin: 0%;

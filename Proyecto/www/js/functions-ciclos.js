@@ -16,6 +16,7 @@ function nuevoDiaFestivo() {
 	nuevoDia.firstChild.nextSibling.nextSibling.nextSibling.firstChild.nextSibling.nextSibling.nextSibling.setAttribute("name","motivo"+cont);
 	nuevoDia.firstChild.nextSibling.nextSibling.nextSibling.firstChild.nextSibling.nextSibling.nextSibling.value="";
 	form.insertBefore(nuevoDia,fin);
+	creaCalendario("fecha"+cont);
 }
 
 function quitarDiaFestivo() {
@@ -32,5 +33,4 @@ function eliminaDiaFestivo(dia) {
 	var form = document.getElementById("contenedor"); 
 	var dia = document.getElementById("dia-festivo"+dia);
 	form.removeChild(dia);
-
 }

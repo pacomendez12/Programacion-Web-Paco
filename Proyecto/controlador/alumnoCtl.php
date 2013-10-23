@@ -23,8 +23,10 @@
 					 	$codigo = $_POST["codigo"];
 					 	$nombre = $_POST["nombre"];
 					 	$apellidos = $_POST["apellido"];
+					 	$correo = $_POST['correo'];
+					 	$carrera = $_POST['carrera'];
 					 	
-						$resultado = $this->modelo->alta($codigo,$nombre,$apellidos);
+						$resultado = $this->modelo->alta($codigo,$nombre,$apellidos, $correo, $carrera);
 						if($resultado !== false){
 							require_once("vista/listaAlumnoView.html");
 						}else{

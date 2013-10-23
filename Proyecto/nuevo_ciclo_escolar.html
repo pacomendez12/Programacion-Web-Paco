@@ -17,6 +17,7 @@
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="www/img/apple-touch-icon-72x72-precomposed.png" />
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="www/img/apple-touch-icon-114x114-precomposed.png" />
         
+       
 
         <link rel="stylesheet" href="www/css/normalize.css">
         <link rel="stylesheet" href="www/css/main.css">
@@ -65,12 +66,12 @@
 					</div>
 					<div id="fi" class="linea">
 						<label for="fecha_inicio">Fecha de inicio:</label>
-						<input id="fecha_inicio" type="date" name="fecha_inicio" placeholder="22/08/2013" />
+						<input id="fecha_inicio" type="date" name="fecha_inicio" class="fecha" placeholder="22/08/2013" />
 						<div class="clear"></div>
 					</div>
 					<div id="ff" class="linea">
 						<label for="fecha_fin">Fecha de fin:</label>
-						<input id="fecha_fin" type="date" name="fecha_fin" placeholder="14/12/2013" />
+						<input id="fecha_fin" type="date" name="fecha_fin" class="fecha" placeholder="14/12/2013" />
 						<div class="clear"></div>
 					</div>
 					<hr>
@@ -79,7 +80,7 @@
 					<div class="dia-festivo" id="dia-festivo1">
 						<div class="linea">
 							<label class="opt" for="fecha1">Fecha:	</label>
-							<input class="fecha" id="fecha1" class="input-mini" type="date" name="fecha1" placeholder="12/10/2013" />
+							<input class="fecha" id="fecha1" class="input-mini" type="date"  class="fecha" name="fecha1" placeholder="12/10/2013" />
 							<div class="clear"></div>
 						</div>			
 						<div class="linea">
@@ -123,7 +124,14 @@
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
         
-        <script src="www/js/valida.js"></script>
+        <link rel="stylesheet" type="text/css" href="www/cal/css/jscal2.css" />
+    	<link rel="stylesheet" type="text/css" href="www/cal/css/border-radius.css" />
+    	<link rel="stylesheet" type="text/css" href="www/cal/css/steel/steel.css" />
+	    <script type="text/javascript" src="www/cal/js/jscal2.js"></script>
+	    <script type="text/javascript" src="www/cal/js/lang/es.js"></script>
+	    <script type="text/javascript" src="www/cal/js/calendario.js"></script>
+
+	    <script src="www/js/valida.js"></script>
         <script src="www/js/functions-ciclos.js"></script>
     </body>
 </html>
