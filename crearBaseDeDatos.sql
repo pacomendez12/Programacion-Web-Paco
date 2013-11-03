@@ -120,7 +120,7 @@ alter table columnas_hojas add constraint  fk_ch_rubro foreign key (id_rubro) re
 
 --datos por default-----------------------------------------------------------------------------------------
 --administrador
-insert into administrador values(0,'admin','admin','admin','admin@admin.admin');
+insert into administrador values(0,'admin','admin','d033e22ae348aeb5660fc2140aec35850c4da997','admin@admin.admin');
 
 --academias
 insert into academia values(1,'Computación básica');

@@ -50,6 +50,7 @@ function validaLogin() {
 
 
 function errorLogin(){
+	var form = document.getElementById("login");
 	muestraError(form.codigo,"Tus datos son inválidos");
 	return 0;
 }
