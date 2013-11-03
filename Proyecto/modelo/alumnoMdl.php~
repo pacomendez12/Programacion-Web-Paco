@@ -2,27 +2,86 @@
 	class AlumnoMdl{
 		public $driver;
 		
-		function __construct() {
-			$this->driver = new mysqli('localhost', 'cc409_user106', 'bNLQSfu005', 'cc409_user106');
+		function __construct($driver) {
+			/*$this->driver = new mysqli('localhost', 'cc409_user106', 'bNLQSfu005', 'cc409_user106');
 			if($this->driver->connect_errno)
-				die("no se pudo conectar");			
-		
+				die("no se pudo conectar");			*/
+			$this->driver = $driver;
 		}
 	
-		function alta($codigo, $nombre, $ap) {
+		function alta($codigo, $nombre, $ap, $correo, $carrera, $celular, $pagina, $github) {
+			include("PHPMailer/class.phpmailer.php");
+			include("PHPMailer/class.smtp.php");
+			
+			$pass = self::generaContra();
+			/*al guardar la contraseña hay que cifrarla con sha1*/
+			$passDB = sha1($pass);
+			
 			$query = 
-				"INSERT INTO alumno(id,nombre,correo,ap)
-				VALUES(
-					default,
+				"INSERT INTO alumno VALUES(
 					\"$codigo\",
 					\"$nombre\"	,			
-					\"$ap\"
+					\"$ap\",
+					\"$passDB\",
+					\"$correo\",
+					\"$carrera\",
+					\"true\",
+					\"$celular\",
+					\"$github\",
+					\"$pagina\",
 				)";
 			$this->driver->query($query);
 			if($this->driver->insert_id)
 				return $this->driver->insert_id;
 			else
-				return false; 
+				return false;
+				
+			$pass = self::generaContra();
+			/*al guardar la contraseña hay que cifrarla con sha1*/
+			
+			
+			$mensaje="Hola $nombre $ap <br>";
+			$mensaje.="Ha sido creada tu cuenta en el sistema de calificaciones<br>";
+			$mensaje.="a continuación te proporcionamos tus datos:<br><br><br>";			
+			$mensaje.="Tu código es: $codigo <br>Tu contraseña es: $pass";
+
+
+			/*envío del correo*/
+			$mail = new PHPMailer();
+			$mail->IsSMTP();
+			$mail->SMTPAuth = true;
+			$mail->SMTPSecure = "tls";
+			$mail->CharSet="UTF-8";
+			$mail->Host = "smtp.gmail.com";
+			$mail->Port = 587;
+			$mail->Username = "pacomendez12@gmail.com";
+			$mail->Password = "Pacotorro12@";
+			$mail->From = 'pacomendez12@gmail.com';
+			$mail->FromName = 'Francisco Méndez';
+			$mail->IsHTML(true);
+			$mail->Subject = "Cuenta en el sistema de calificaciones";
+			$mail->AltBody = "Tu código es: $codigo \nTu contraseña es: $pass";
+			$mail->MsgHTML($mensaje);
+			
+			/*$mail->WordWrap = 50;*/  
+			/*$mail->Body = "Tu código es: $codigo <br>Tu contraseña es: $pass";*/  
+
+			$mail->AddAddress($correo);
+			if(!$mail->Send()) {
+			  //echo "<br>Error: " . $mail->ErrorInfo;
+			}
+			return true;
+		}
+		
+		function generaContra() {
+			$a = sha1("contraseña");
+			$a = str_shuffle($a.'abcdefghijklmnopqrstuvwxyz0123456789#@,.');
+			$c = substr($a,1,8);
+			$b = strtoupper(substr($a,10,8));
+			$a=$b.$c;
+			$a = str_shuffle($a);
+			$a = strrev($a);
+			return substr($a,0,12);
 		}
 		
 		function consulta() {

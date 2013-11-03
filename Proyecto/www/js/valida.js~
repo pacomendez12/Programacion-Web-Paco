@@ -10,15 +10,15 @@ function validaFormularioRegistro() {
 	if (validaNumero(form.codigo.value) == "") {
 		muestraError(form.codigo,"Ingresa un código válido");
 		return 0;
-	} else if (form.nombre.value == "") {
+	} else if (trim(form.nombre.value) == "") {
 		muestraError(form.nombre,"Ingresa un nombre");
 		return 0;
 	}
-	else if (form.ap.value == "") {
+	else if (trim(form.ap.value) == "") {
 		muestraError(form.ap,"Ingresa un apellido");
 		return 0;
 	}
-	else if (form.carrera.value == "") {
+	else if (trim(form.carrera.value) == "") {
 		muestraError(form.carrera,"Ingresa una carrera");
 		return 0;
 	}
@@ -35,10 +35,10 @@ function validaFormularioRegistro() {
 function validaLogin() {
 	var form = document.getElementById("login");
 	
-	if (form.us.value == "") {
-		muestraError(form.us,"Ingresa tu nombre de usuario");
+	if (validaNumero(trim(form.codigo.value)) == "") {
+		muestraError(form.codigo,"Ingresa tu código");
 		return 0;
-	} else if (form.con.value == "") {
+	} else if (trim(form.con.value) == "") {
 		muestraError(form.con,"Ingresa tu contraseña");
 		return 0;
 	}else{
@@ -48,9 +48,14 @@ function validaLogin() {
 	}	
 }
 
+
+function errorLogin(){
+	muestraError(form.codigo,"Tus datos son inválidos");
+	return 0;
+}
+
 /*validación para recuperar contraseña*/
 function validaRecuperarContrasena() {
-	alert('hola');
 	var form = document.getElementById("rc");
 	if (!exprCorreo.test(form.email.value)) {
 		muestraError(form.email,"Ingresa una cuenta de correo válida");
@@ -76,18 +81,35 @@ function validaNuevoCiclo() {
 		return 0; 
 	}
 	
+	var fecha_ini = form.fecha_inicio.value.split('/');
+	var inicio = new Date();
+	inicio.setFullYear(fecha_ini[2],fecha_ini[1],fecha_ini[0]);
+	var fecha_fin = form.fecha_fin.value.split('/');
+	var fin = new Date();
+	fin.setFullYear(fecha_fin[2],fecha_fin[1],fecha_fin[0]);	
+	
+	if(fin <= inicio){
+		muestraError(form.fecha_inicio,"La fecha de fin es inferior a la de inicio");
+		return 0; 
+	}
+	
 	for (i=0;i<fechas.length;i++) {
 		if (!fechas[i].value.match(exprFecha)) {
 			muestraError(fechas[i],"Formato de fecha inválido");
 			return 0;
 		}
-	if (motivos[i].value=="") {
+	if (trim(motivos[i].value)=="") {
 			muestraError(motivos[i],"Debe indicar la causa de la suspesión");
 			return 0;
 		}
 	}
 	form.submit();	
 }
+
+
+
+
+/*axiliares---------------------------------------------------------------------------------*/
 
 function muestraError(elemento,cadena) {
 	var error = document.getElementById("error");
@@ -154,4 +176,10 @@ function validaNumero(numero) {
 		return n;
 	}
 
+}
+
+function trim(myString)
+{
+	return myString.replace(/^\s+/g,'').replace(/\s+$/g,'');
+	/*return this.replace(/^\s+|\s+$/g, '');*/
 }

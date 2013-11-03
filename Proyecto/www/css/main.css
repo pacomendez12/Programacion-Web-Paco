@@ -182,6 +182,10 @@ aside#menu-superior{
 	margin-top: .2%;
 }
 
+.flotar-derecha{
+	float: right !important;
+}
+
 aside#menu-izquierdo{
 	border: none;
 	position: fixed;
@@ -407,6 +411,7 @@ section table tr:nth-child(4n+2){
 
 .contenedor-grande{
 	width: 95%;
+	text-align: center;
 }
 
 .contenedor-mediano{
@@ -454,6 +459,8 @@ section form div div label.opt{
 	width: 27.5%;
 }
 
+.btn-derecha{
+}
 
 #btn{
 	float: right;
@@ -474,6 +481,10 @@ section form div div label.opt{
 	display: block;
 	margin-bottom: 5%;
 	margin-top: 5%;
+}
+
+.desplazar{
+	margin-left: 10%;
 }
 
 .boton{
@@ -521,6 +532,7 @@ section form div div label.opt{
 .boton-mini{
 	float: right;
 	border: none;
+	margin: 0% 1% 0% 1%;
 	-moz-border-radius: 10px;
 	-o-border-radius: 10px;
 	-webkit-border-radius: 10px;
@@ -726,7 +738,11 @@ li a:hover{
 	background-image: linear-gradient(center top , #F19E2C, #F19E2C);
 }
 
-section h1{
+.resaltar{
+	font-weight: bold;
+}
+
+section h1,h2,h3{
 	text-align: center;
 }
 
