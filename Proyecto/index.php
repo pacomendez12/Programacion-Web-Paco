@@ -1,7 +1,6 @@
 <?php
-
-	//$driver = new mysqli('localhost', 'cc409_user106', 'bNLQSfu005', 'cc409_user106');
-	$driver = new mysqli('localhost', 'paco', 'paco','cc409_user106');
+	require_once('datos.inc');
+	$driver = new mysqli($servidor, $usuario, $contrasena, $DB);
 	if($driver->connect_errno){
 		die("no se pudo cnectar");
 	}

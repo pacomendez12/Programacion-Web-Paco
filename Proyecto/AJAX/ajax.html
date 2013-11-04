@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Probando AJAX</title>
+	<script type="text/javascript" src="ajax.js"></script>
+</head>
+<body onload="hazAlgo()">
+<select id="sel" onchange="cargaDatos(this.value);">
+	<option value="0">Selecciona una opcion</option>
+</select>
+
+<script type="text/javascript">
+
+
+function hazAlgo(){
+	var miajax = nuevoAjax();
+
+	miajax.open('GET','cons.php',true);
+
+	miajax.onreadystatechange = function(){
+		if(miajax.readyState == 4){
+			var resultado = eval(miajax.responseText);
+			console.log(resultado);
+			var opt = document.getElementById('sel');
+			for(i in resultado){
+				var texto = document.createTextNode(resultado[i].nombre);
+				var opcion = document.createElement('option');
+				opcion.setAttribute('value',resultado[i].id_alumno);
+				opcion.appendChild(texto);
+				opt.appendChild(opcion);
+			}
+		}
+	};
+	miajax.send(null);
+}
+
+function cargaDatos(id){
+	var miajax = nuevoAjax();
+	
+	miajax.open('POST','pet.php',true);
+	miajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+	miajax.onreadystatechange = function(){
+		if(miajax.readyState == 4){
+			var resultado = eval(miajax.response.Text);
+			console.log(resultado);
+		}
+	};
+	miajax.send('id_alumno='+id);
+}
+
+</script>
+</body>
+</html>
