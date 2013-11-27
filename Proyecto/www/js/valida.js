@@ -31,6 +31,34 @@ function validaFormularioRegistro() {
 	}
 }
 
+
+/*Validación cambio de contraseña*/
+function validaCambioContrasena(){
+	var form = document.getElementById("registro");
+	//alert(form.actual.value);
+	
+	if (trim(form.actual.value) == "") {
+		muestraError(form.actual,"Ingresa la contraseña actual");
+		return 0;
+	}
+	else 
+	if (trim(form.nueva.value) == "") {
+		muestraError(form.nueva,"Ingresa la nueva contraseña");
+		return 0;
+	}else
+	if(form.nueva.value.length < 8){
+		muestraError(form.nueva,"Longitud mínima de 6 cararacteres");
+		return 0;
+	}
+	else 
+	if(!exprCorreo.test(form.email.value)){
+		muestraError(form.email,"Formato de email inválido");
+		return 0;
+	}else{
+		form.submit();
+	}
+}
+
 /*validación del login*/
 function validaLogin() {
 	var form = document.getElementById("login");
@@ -94,7 +122,7 @@ function validaNuevoCiclo() {
 		return 0; 
 	}
 	
-	for (i=0;i<fechas.length;i++) {
+	/*for (i=0;i<fechas.length;i++) {
 		if (!fechas[i].value.match(exprFecha)) {
 			muestraError(fechas[i],"Formato de fecha inválido");
 			return 0;
@@ -103,7 +131,7 @@ function validaNuevoCiclo() {
 			muestraError(motivos[i],"Debe indicar la causa de la suspesión");
 			return 0;
 		}
-	}
+	}*/
 	form.submit();	
 }
 

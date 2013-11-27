@@ -1,5 +1,5 @@
 <?php
-class AlumnoMdl{
+class ConfigurarMdl{
 	public $driver;
 
 	function __construct($driver) {
@@ -83,22 +83,31 @@ function generaContra() {
 	return substr($a,0,12);
 }
 
-function consulta($buscado) {
-
-	if($buscado == null)
-		$myquery = "select * from alumno";
-	else
-		$myquery = "select * from alumno where";
-
-	$resultado = $this->driver->query($myquery);
-	if($resultado){
-		while($fila = $resultado->fetch_array(MYSQLI_ASSOC)){
-			$alumnos[] = $fila;
-		}
-		return $alumnos;
-	} else{
+function modificar($actual,$nueva, $email) {
+	//determinamos que tipo de usuario es
+	$tipoUsuario ='';
+	switch ($_SESSION['permisos']) {
+				case 1:
+					$tipoUsuario='administrador';
+					break;
+				case 2:
+					$tipoUsuario='profesor';
+					break;
+				case 3:
+					$tipoUsuario='alumno';
+					break;
+			}
+	$codigo = $_SESSION['codigo'];
+	$contrasena = sha1($actual);
+	$query = "select * from $tipoUsuario where codigo='$codigo' and contrasena='$contrasena'";
+	$resultado = $this->driver->query($query);
+	if($resultado->num_rows == 0)
 		return false;
-	}
+
+	$contrasena = sha1($nueva);
+	$query = "update ".$tipoUsuario." set contrasena='$contrasena', email='$email' where codigo=$codigo";
+	$resultado = $this->driver->query($query);
+	return $resultado;
 }	
 
 }

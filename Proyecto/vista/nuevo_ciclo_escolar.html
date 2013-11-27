@@ -55,13 +55,13 @@
 				<a href="#"><img src="www/img/engrane.png" alt="engrane" title="Configuración" width="40" /></a>
 			</aside>
 			<section id="contenido" class="cbl">
-				<form method="post" action="" id="ciclo" name="ciclo">
+				<form method="post" action="index.php?ctl=ciclo&acc=nuevo" id="ciclo" name="ciclo">
 				<div id="contenedor" class="contenedor-mediano">
 					
 					<h2 id="titulo">Creación de un nuevo ciclo escolar</h2>
 					<div id="nom" class="linea">
 						<label for="nombre">Nombre:</label>
-						<input id="nombre" type="text" name="nombre" placeholder="2013B" />
+						<input id="nombre" type="text" name="nombre" placeholder="2013B" onblur="verificaNombre(this.value)" />
 						<div class="clear"></div>
 					</div>
 					<div id="fi" class="linea">
@@ -74,30 +74,6 @@
 						<input id="fecha_fin" type="text" name="fecha_fin" class="fecha" placeholder="14/12/2013" />
 						<div class="clear"></div>
 					</div>
-					<hr>
-
-					<h4 class="fuente-cursiva texto-centro">Días festivos</h4>
-					<div class="dia-festivo" id="dia-festivo1">
-						<div class="linea">
-							<label class="opt" for="fecha1">Fecha:	</label>
-							<input class="fecha" id="fecha1" class="input-mini" type="text"  class="fecha" name="fecha1" placeholder="12/10/2013" />
-							<div class="clear"></div>
-						</div>			
-						<div class="linea">
-							<label class="opt" for="motivo1">Causa:	</label>
-							<input class="motivo" id="motivo1" class="input-medio" type="text" name="motivo1" />
-							<div class="clear"></div>
-						</div>	
-					</div>
-					<div id="fin-dias"></div>
-
-
-
-					<button id="btn" class="boton-mini-rojo" type="button" onclick="quitarDiaFestivo()"> - </button>
-					<button id="btn" class="boton-mini" type="button" onclick="nuevoDiaFestivo()">+</button>
-
-					<div class="clear"></div>
-
 					<button id="btn" class="boton" type="button" onclick="validaNuevoCiclo()">Crear</button>
 					<div class="clear"></div>
 

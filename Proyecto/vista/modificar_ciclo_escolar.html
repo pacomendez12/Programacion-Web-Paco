@@ -63,20 +63,23 @@
 					<h2 id="titulo">Modificación del ciclo escolar</h2>
 					<div id="nom" class="linea">
 						<label for="nombre">Nombre:</label>
-						<input id="nombre" type="text" name="nombre" placeholder="2013B" value="2014B" />
+						<input disabledsho id="nombre" type="text" name="nombre" placeholder="2013B" onblur="verificaNombre(this.value)" value="{nombre}" />
 						<div class="clear"></div>
 					</div>
 					<div id="fi" class="linea">
 						<label for="fecha_inicio">Fecha de inicio:</label>
 					
-						<input id="fecha_inicio" type="text" name="fecha_inicio" class="fecha" placeholder="22/08/2013" value="21/08/2014" />
+						<input id="fecha_inicio" type="text" name="fecha_inicio" class="fecha" placeholder="22/08/2013" value="{fi}" />
 						<div class="clear"></div>
 					</div>
 					<div id="ff" class="linea">
 						<label for="fecha_fin">Fecha de fin:</label>
-						<input id="fecha_fin" type="text" name="fecha_fin" class="fecha" placeholder="14/12/2013" value="14/12/2014" />
+						<input id="fecha_fin" type="text" name="fecha_fin" class="fecha" placeholder="14/12/2013" value="{ff}" />
 						<div class="clear"></div>
 					</div>
+					
+					
+					
 					<hr>
 
 					<h4 class="fuente-cursiva texto-centro">Días festivos</h4>

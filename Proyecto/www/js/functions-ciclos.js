@@ -34,3 +34,24 @@ function eliminaDiaFestivo(dia) {
 	var dia = document.getElementById("dia-festivo"+dia);
 	form.removeChild(dia);
 }
+
+function verificaNombre(nombre){
+	n = document.getElementById('nombre');
+	if (!exprCiclo.test(n.value)) {
+		muestraError(n,"Ingresa un nombre válido para el ciclo con el formato adecuado");
+		n.value == "";
+	}else{
+	$.ajax({
+		type: 'POST',
+		data: {nom:nombre},
+		url: 'consultaNombreCodigo.php',
+		dataType: 'json',
+		success: function(json){
+			if(json == false){
+				muestraError(n,"Ya existe un ciclo con ese nombre");
+				n.value = "";
+			}
+		}
+	});
+	}
+}
