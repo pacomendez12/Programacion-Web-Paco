@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Nuevo ciclo escolar</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="shortcut icon" href="www/img/favicon.ico" />
+        <link rel="apple-touch-icon-precomposed" href="www/img/apple-touch-icon-precomposed.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="www/img/apple-touch-icon-57x57-precomposed.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="www/img/apple-touch-icon-72x72-precomposed.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="www/img/apple-touch-icon-114x114-precomposed.png" />
+        
+       
+
+        <link rel="stylesheet" href="www/css/normalize.css">
+        <link rel="stylesheet" href="www/css/main.css">
+		<!--[if lt IE 9]>
+			<link href="css/main-ie.css" rel="stylesheet" type="text/css" />
+		<![endif]-->
+        <script src="www/js/vendor/modernizr-2.6.2.min.js"></script>
+        <!--[if lt IE 9]>
+            <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+			<div class="errorI" id="error"><div id="text-error"></div><div id="close" class="close" onclick="cerrarError()"><img src="www/img/cerrar.png" alt="cerrar" width="15" /></div></div>
+
+			<aside id="menu-superior">
+				<button class="boton-mini" id="btn_salr">Salir</button>
+				<span id="et_usuario"><a href="#">Francisco de Jesús...</a></span>
+				<nav>
+					<ul>
+						<li><a href="#">Cursos</a></li>
+						<li><a href="#">Grupos</a></li>
+						<li><a href="#">Calificaciones</a></li>
+					</ul>
+				</nav>
+			</aside>
+			<div class="clear"></div>
+			<!-- <div id="logo"><img src="img/udg.png" alt="" width="100%" /></div>-->
+			<aside id="menu-izquierdo">
+				<a href="#"><img src="www/img/casa.png" alt="home" title="Principal" width="40" /></a>
+				<a href="#"><img src="www/img/lista.png" alt="lista" title="Listas" width="40" /></a>
+				<a href="#"><img src="www/img/grupo.png" alt="grupo" title="Grupos" width="40" /></a>
+				<a href="#"><img src="www/img/engrane.png" alt="engrane" title="Configuración" width="40" /></a>
+			</aside>
+			<section id="contenido" class="cbl">
+				<form method="post" action="index.php?ctl=ciclo&acc=clonar" id="ciclo" name="ciclo">
+				<div id="contenedor" class="contenedor-mediano">
+					
+					<h2 id="titulo">Clonación de un ciclo escolar</h2>
+
+					<div id="noma" class="linea">
+						<label for="nombre_clonado">Ciclo a clonar:</label>
+						<select id="nombre_clonado" type="text" name="nombre_clonado" placeholder="2013B" onblur="verificaNombre(this.value)">
+							<option value="">Selecciona una ciclo</option>
+							{ciclos_option}
+						<select/>
+						<div class="clear"></div>
+					</div>
+					<div id="nom" class="linea">
+						<label for="nombre">Nombre:</label>
+						<input id="nombre" type="text" name="nombre" placeholder="2013B" onblur="verificaNombre(this.value)" />
+						<div class="clear"></div>
+					</div>
+					<div id="fi" class="linea">
+						<label for="fecha_inicio">Fecha de inicio:</label>
+						<input id="fecha_inicio" type="text" name="fecha_inicio" class="fecha" placeholder="22/08/2013" />
+						<div class="clear"></div>
+					</div>
+					<div id="ff" class="linea">
+						<label for="fecha_fin">Fecha de fin:</label>
+						<input id="fecha_fin" type="text" name="fecha_fin" class="fecha" placeholder="14/12/2013" />
+						<div class="clear"></div>
+					</div>
+					<button id="btn" class="boton" type="button" onclick="validaClonarCiclo()">Clonar</button>
+					<div class="clear"></div>
+
+				</div>
+				</form>	
+				
+				
+
+			</section>
+			<div class="clear"></div>
+			
+
+			<footer class="espacio"><span>&copy; 2013 Todos los derechos reservados - Francisco de Jesús Méndez Pelayo</span></footer>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src='//www.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+        
+        <link rel="stylesheet" type="text/css" href="www/cal/css/jscal2.css" />
+    	<link rel="stylesheet" type="text/css" href="www/cal/css/border-radius.css" />
+    	<link rel="stylesheet" type="text/css" href="www/cal/css/steel/steel.css" />
+	    <script type="text/javascript" src="www/cal/js/jscal2.js"></script>
+	    <script type="text/javascript" src="www/cal/js/lang/es.js"></script>
+	    <script type="text/javascript" src="www/cal/js/calendario.js"></script>
+
+	    <script src="www/js/valida.js"></script>
+        <script src="www/js/functions-ciclos.js"></script>
+    </body>
+</html>
