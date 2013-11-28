@@ -182,7 +182,8 @@ function muestraError(elemento,cadena) {
 	var error = document.getElementById("error");
 	document.getElementById("text-error").innerHTML = cadena;
 	error.setAttribute('class', 'errorV');
-	elemento.focus();
+	if(elemento!=null)
+		elemento.focus();
 	setTimeout("error.setAttribute('class', 'errorI')", 3000);
 }
 

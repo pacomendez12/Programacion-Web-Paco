@@ -10,11 +10,11 @@
 
 		function SiguienteIdDiaFestivo(){
 			global $driver;
-			$id = false;
+			$id = 0;
 			$resultado = $driver->query("SELECT MAX(id_dia) AS id FROM dias_de_suspension");
 			if($fila = $resultado->fetch_array(MYSQLI_ASSOC)){
 				if($fila['id']==NULL)
-					$id = -1;
+					$id = 0;
 				else
 					$id = trim($fila['id']);
 			}
