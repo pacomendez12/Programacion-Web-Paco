@@ -36,6 +36,10 @@ if(isset($_GET["ctl"])) {
 			require_once("controlador/configurarCtl.php");
 			$ctl = new ConfigurarCtl($driver);
 			break;
+		case 'profesor':
+			require_once("controlador/profesorCtl.php");
+			$ctl = new ProfesorCtl($driver);
+			break;
 		default:
 			//require_once("controlador/principalCtl.php");
 			//$ctl = new PrincipalCtl($driver);

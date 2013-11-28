@@ -15,7 +15,7 @@
 			/*recibir acción*/
 					if(empty($_POST)){
 					/*	require_once("vista/registro.html");*/
-						self::generarVista('recupera_contrasena.html',false);
+						self::generarVista('recupera_contrasena.html','Recuperación de contraseña',0);
 					}
 					 else {
 					 	/*obtener datos de POST*/
@@ -25,7 +25,7 @@
 					 	$datos = array('{email}' => $email);
 						$resultado = $this->modelo->recuperar($email);
 						if($resultado !== false){
-							self::generarVista('confirma_recupera_contrasena.html',false,$datos);
+							self::generarVista('confirma_recupera_contrasena.html','Contraseña modificada',0,$datos);
 						}else{
 							require_once("vista/error.html");
 						}

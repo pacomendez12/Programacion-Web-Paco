@@ -57,13 +57,13 @@
 				<a href="#"><img src="www/img/engrane.png" alt="engrane" title="Configuración" width="40" /></a>
 			</aside>
 			<section id="contenido" class="cbl">
-				<form method="post" action="" id="ciclo" name="ciclo">
+				<form method="post" action="index.php?ctl=ciclo&acc=modificar&nombre={nombre}" id="ciclo" name="ciclo">
 				<div id="contenedor" class="contenedor-mediano">
-					
+					<input type="hidden" name="modificado" value="{nombre}" />
 					<h2 id="titulo">Modificación del ciclo escolar</h2>
 					<div id="nom" class="linea">
 						<label for="nombre">Nombre:</label>
-						<input disabledsho id="nombre" type="text" name="nombre" placeholder="2013B" onblur="verificaNombre(this.value)" value="{nombre}" />
+						<input disabled id="nombre" type="text" name="nombre" placeholder="2013B" onblur="verificaNombre(this.value)" value="{nombre}" />
 						<div class="clear"></div>
 					</div>
 					<div id="fi" class="linea">
@@ -82,48 +82,45 @@
 					
 					<hr>
 
+					<h3>Agrega los días festivos del ciclo escolar</h3>
+					<br>
 					<h4 class="fuente-cursiva texto-centro">Días festivos</h4>
-					<div class="dia-festivo" id="dia-festivo1">
-						<div id="close" class="close" onclick="eliminaDiaFestivo(1)"><img src="www/img/cerrar.png" alt="cerrar" width="15" />
+					<div style="display: none" class="dia-festivo" id="dia-festivo{id}">
+						<div  class="close" onclick="eliminaDiaFestivo({id})"><img src="www/img/cerrar.png" alt="cerrar" width="15" />
 						</div>
 
 						<div class="linea">							
-							<label class="opt" for="fecha1">Fecha:	</label>
-							<input class="fecha" id="fecha1" class="input-mini" type="text" class="fecha" name="fecha1" placeholder="12/10/2013" value="12/10/2013" />
+							<label class="opt" for="fecha{id}">Fecha:	</label>
+							<input class="fecha" id="fecha{id}" class="input-mini" type="text" class="fecha" name="fecha{id}" placeholder="12/10/2013" value="{fecha}" />
 							<div class="clear"></div>
 						</div>			
 						<div class="linea">
-							<label class="opt" for="motivo1">Causa:	</label>
-							<input class="motivo" id="motivo1" class="input-medio" type="text" name="motivo1" value="Aniversario UDG" />
+							<label class="opt" for="motivo{id}">Causa:	</label>
+							<input class="motivo" id="motivo{id}" class="input-medio" type="text" name="motivo{id}" value="{motivo}" onblur="verificaMotivoDiaFestivo({id})" />
 							<div class="clear"></div>
 						</div>	
-					</div>
-
-					<div class="dia-festivo" id="dia-festivo2">
-						<div id="close" class="close" onclick="eliminaDiaFestivo(2)"><img src="www/img/cerrar.png" alt="cerrar" width="15" />
+					</div><div class="dia-festivo" id="dia-festivo{id}">
+						<div  class="close" onclick="eliminaDiaFestivo({id})"><img src="www/img/cerrar.png" alt="cerrar" width="15" />
 						</div>
 
 						<div class="linea">							
-							<label class="opt" for="fecha2">Fecha:	</label>
-							<input class="fecha" id="fecha2" class="input-mini" type="text" class="fecha" name="fecha2" placeholder="12/10/2013" value="20/11/2013" />
+							<label class="opt" for="fecha{id}">Fecha:	</label>
+							<input class="fecha" id="fecha{id}" class="input-mini" type="text" class="fecha" name="fecha{id}" placeholder="12/10/2013" value="{fecha}" />
 							<div class="clear"></div>
 						</div>			
 						<div class="linea">
-							<label class="opt" for="motivo1">Causa:	</label>
-							<input class="motivo" id="motivo2" class="input-medio" type="text" name="motivo2" value="Revolución Méxicana" />
+							<label class="opt" for="motivo{id}">Causa:	</label>
+							<input class="motivo" id="motivo{id}" class="input-medio" type="text" name="motivo{id}" value="{motivo}" onblur="verificaMotivoDiaFestivo({id})" />
 							<div class="clear"></div>
 						</div>	
-					</div>
-					<div id="fin-dias"></div>
+					</div><div id="fin-dias"></div>
 
 
-
-					<button id="btn" class="boton-mini-rojo" type="button" onclick="quitarDiaFestivo()"> - </button>
 					<button id="btn" class="boton-mini" type="button" onclick="nuevoDiaFestivo()">+</button>
 
 					<div class="clear"></div>
 					<button id="btn" class="boton" type="button" onclick="validaNuevoCiclo()">Guardar</button>
-					<button id="btn" class="boton" type="button" onclick="window.location.href='listar_ciclo_escolar.html'" >Cancelar</button>
+					<button id="btn" class="boton" type="button" onclick="window.location.href='index.php?ctl=ciclo&acc=listar'" >Cancelar</button>
 					<div class="clear"></div>
 
 				</div>

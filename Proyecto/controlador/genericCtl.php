@@ -14,9 +14,12 @@
 			if($menu === 1){
 				$vista.= file_get_contents('vista/menu_superior.html');
 				$vista.= file_get_contents('vista/menu_izquierdo_administrador.html');
-			}else if($menu === 2 || $menu === 3){
+			}else if($menu === 2){
 				$vista.= file_get_contents('vista/menu_superior.html');
-				$vista.= file_get_contents('vista/menu_izquierdo_alumno_profesor.html');
+				$vista.= file_get_contents('vista/menu_izquierdo_profesor.html');
+			}elseif($menu === 3){
+				$vista.= file_get_contents('vista/menu_superior.html');
+				$vista.= file_get_contents('vista/menu_izquierdo_alumno.html');
 			}
 			$vista.= '{contenido}';
 			$vista.= '<div class="clear"></div>';
@@ -40,9 +43,18 @@
 			/*se reemplazando los datos que hagan falta*/
 			if($datos!==null){
 				$vista = strtr($vista,$datos);
-			}			
+				if(!isset($datos['{botones}'])){
+					$vista = str_replace('{botones}',"", $vista);
+				}
+			}else{
+				$vista = str_replace('{botones}',"", $vista);
+			}
 			
 			echo $vista;
+		}
+
+		function obtenBotonesMenuSuperior($ctl){
+			return file_get_contents("vista/menu_superior/$ctl.html");
 		}
 	}
 ?>

@@ -13,7 +13,7 @@
 	}
 
 	function validaNombre($cad){
-		return preg_match("/^^([a-zA-Z ñÑáéíóúÁÉÍÓÚüÜ])*$/", $cad);
+		return preg_match("/^([a-zA-Z ñÑáéíóúÁÉÍÓÚüÜ])*$/", $cad);
 	}
 
 	//function valida

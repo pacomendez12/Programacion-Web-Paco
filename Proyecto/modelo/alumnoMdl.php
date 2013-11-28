@@ -42,7 +42,7 @@ $mensaje="Hola $nombre $ap <br>";
 $mensaje.="Ha sido creada tu cuenta en el sistema de calificaciones<br>";
 $mensaje.="a continuación te proporcionamos tus datos:<br><br><br>";			
 $mensaje.="Tu código es: $codigo <br>Tu contraseña es: $pass";
-$mensaje.="<br><br>Para ingresar al sistema da en el sieguiente link: http://alanturing.cucei.udg.mx/cc409/user106/index.php?ctl=login";
+$mensaje.="<br><br>Para ingresar al sistema da en el sieguiente link: <a href='http://alanturing.cucei.udg.mx/cc409/user106/index.php?ctl=login'>http://alanturing.cucei.udg.mx/cc409/user106/index.php?ctl=login</a>";
 
 
 /*envío del correo*/
@@ -53,9 +53,9 @@ $mail->SMTPSecure = "tls";
 $mail->CharSet="UTF-8";
 $mail->Host = "smtp.gmail.com";
 $mail->Port = 587;
-$mail->Username = "pacomendez12@gmail.com";
-$mail->Password = "Pacotorro12@";
-$mail->From = 'pacomendez12@gmail.com';
+$mail->Username = "pacomendez1210@gmail.com";
+$mail->Password = "pacotorro";
+$mail->From = 'pacomendez1210@gmail.com';
 $mail->FromName = 'Francisco Méndez';
 $mail->IsHTML(true);
 $mail->Subject = "Cuenta en el sistema de calificaciones";

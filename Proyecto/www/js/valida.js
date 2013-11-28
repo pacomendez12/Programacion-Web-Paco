@@ -31,7 +31,35 @@ function validaFormularioRegistro() {
 	}
 }
 
+function validaFormularioNuevoMaestro(){
+	var form = document.getElementById("registro");
+	
+	if (trim(form.nombre.value) == "") {
+		muestraError(form.nombre,"Ingresa un nombre");
+		return 0;
+	}
+	else if (trim(form.ap.value) == "") {
+		muestraError(form.ap,"Ingresa un apellido");
+		return 0;
+	} else if (!exprCorreo.test(form.correo.value)) {
+		muestraError(form.correo,"Ingresa un email válido");
+		return 0;
+	}
+	else {
+		form.submit();
+	}
+}
 
+function validaBusqueda(){
+	var doc = document.getElementById('busqueda');
+	if(doc.value == ''){
+		muestraError(doc,"Ingresa algo para buscar");
+		return 0;
+	}else{
+		document.getElementById('buscar').submit();
+	}
+
+}
 /*Validación cambio de contraseña*/
 function validaCambioContrasena(){
 	var form = document.getElementById("registro");
@@ -136,6 +164,16 @@ function validaNuevoCiclo() {
 }
 
 
+function validaClonarCiclo(){
+	var form = document.getElementById("ciclo");
+	if (form.nombre_clonado.value=='' || form.nombre_clonado.value=='Selecciona una ciclo') {
+		muestraError(form.nombre_clonado,"Selecciona el ciclo a clonar");
+		return 0;
+	}else{
+		validaNuevoCiclo();
+	}
+}
+
 
 
 /*axiliares---------------------------------------------------------------------------------*/
@@ -148,10 +186,20 @@ function muestraError(elemento,cadena) {
 	setTimeout("error.setAttribute('class', 'errorI')", 3000);
 }
 
+function muestraNotificacion(cadena) {
+	var notificacion = document.getElementById("notificacion");
+	document.getElementById("text-notificacion").innerHTML = cadena;
+	notificacion.setAttribute('class', 'notificacionV');
+	setTimeout("notificacion.setAttribute('class', 'notificacionI')", 3000);
+}
+
 function cerrarError(){
 	error.setAttribute('class', 'errorI');
 }
 
+function cerrarNotificacion(){
+	error.setAttribute('class', 'notificacionI');
+}
 
 function activaCelular(){
 	var cel = document.getElementById('celular');

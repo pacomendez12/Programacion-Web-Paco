@@ -114,7 +114,10 @@ body{
 
 html{
 	background-image: url(../img/fondo1.jpg);
- 	background-color: white;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover; 
+	background-size: cover;
 }
 
 h5{
@@ -386,8 +389,8 @@ section table caption{
 	text-align: center;
 }
 
-section table tr:nth-child(4n+2){
-	background-color: #6AA4EC;
+section table tr:nth-child(2n+2){
+	background-color: #8FB6D6;
 }
 
 #contenedor{
@@ -754,6 +757,10 @@ section h1,h2,h3{
 	text-align: center;
 }
 
+.fuente-negrita{
+	font-weight: bold;
+}
+
 .texto-centro{
 	text-indent: 4em;
 	text-align: justify;
@@ -790,7 +797,7 @@ aside#menu-izquierdo a:hover{
 	right: 35px;
 	top: 45px;
 	width: 280px;
-	height: 15%;
+	height: 100px;
 	background-color: #B8000F;
 	color: white;
 	text-align: center;
@@ -810,7 +817,39 @@ aside#menu-izquierdo a:hover{
 	visibility: visible;
 }
 
+.notificacionV{
+	position: fixed;
+	right: 35px;
+	top: 45px;
+	width: 280px;
+	height: 100px;
+	background-color: #225583;
+	color: white;
+	text-align: center;
+	vertical-align: bottom;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-ms-border-radius: 5px;	
+	border-radius: 5px;
+	border:none;
+	border: 1px solid transparent;
+	background-image: -moz-linear-gradient(center top , #225583, #2B7FC1);
+	background-image: -o-linear-gradient(center top , #225583, #2B7FC1);
+	background-image: -webkit-linear-gradient(top , #225583, #2B7FC1);
+	background-image: -ms-linear-gradient(center top , #225583, #2B7FC1);
+	background-image: linear-gradient(center top , #225583, #2B7FC1);		
+	visibility: visible;
+}
+
 .errorI{
+	position: fixed;
+	visibility: hidden;
+	width: 0%;
+	height: 0%;
+}
+
+.notificacionI{
 	position: fixed;
 	visibility: hidden;
 	width: 0%;
@@ -831,6 +870,11 @@ aside#menu-izquierdo a:hover{
 }
 
 #text-error{
+	position: relative;
+	top: 35%;
+}
+
+#text-notificacion{
 	position: relative;
 	top: 35%;
 }
@@ -863,9 +907,33 @@ table.tabla{
 	}
 
 	aside#menu-superior{
-		display: none;
+		margin-top: 1%;
+		visibility: hidden;
+		position: relative;
+
+		/*display: none;*/
+	}
+	aside nav ul{
+		width: 100%;
+		padding: 0%;
+		margin: 0%;
+		background-color: #ccc;
+		bottom: 5%;
+		margin-bottom: 5%;
 	}
 
+	nav{
+		position: absolute;
+		bottom: 5%;
+		margin-bottom: 5%;
+		top: 1%;
+		margin: 0%;
+		width: 100%;
+		z-index: 0;
+		margin-left: 0%;
+		left: 0% !important;
+		visibility: visible;
+	}
 
 	aside#menu-izquierdo{
 		/*top: 5.9%;*/

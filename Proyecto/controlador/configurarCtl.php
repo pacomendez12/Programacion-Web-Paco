@@ -17,7 +17,7 @@
 					if(empty($_POST)){
 						//cuando se selecciona configurar
 						$array = array('{nombre_para_menu}' => $_SESSION['nombre'], '{email_usuario}' => $_SESSION['correo']);
-						self::generarVista('configurar.html','Configurar Usuario',2,$array);
+						self::generarVista('configurar.html','Configurar Usuario',$_SESSION['permisos'],$array);
 					}else{
 						$actual = trim($this->driver->real_escape_string($_POST["actual"]));
 						$nueva = trim($this->driver->real_escape_string($_POST["nueva"]));
@@ -35,7 +35,7 @@
 							$_SESSION['correo']=$email;
 							$array = array('{usuario}' => $_SESSION['nombre'],
 								'{nombre_para_menu}' => $_SESSION['nombre']);
-							self::generarVista('usuarioModificado.html','Usuario modificado',2,$array);
+							self::generarVista('usuarioModificado.html','Usuario modificado',$_SESSION['permisos'],$array);
 						}else{
 							$mensaje = array('{mensaje}' => 'La contraseña actual no corresponde');
 						 	self::generarVista('error.html','Datos no válidos',0,$mensaje);
@@ -54,7 +54,7 @@
 
 
 
-		public function generarVista($archivo,$titulo,$menu,$datos=null) {
+		/*public function generarVista($archivo,$titulo,$menu,$datos=null) {
 			$vista = file_get_contents('vista/encabezado.html');
 			if($menu === 1){
 				$vista.= file_get_contents('vista/menu_superior.html');
@@ -79,7 +79,7 @@
 			//reemplazamos el titulo de la página
 			$vista = str_replace('{titulo_pagina}', $titulo, $vista);
 
-			/*se reemplazando los datos que hagan falta*/
+			//se reemplazando los datos que hagan falta
 			if($datos!==null){
 				$vista = strtr($vista,$datos);
 			}			
@@ -118,6 +118,6 @@
 				</tbody>
 			</table>";
 			return $tabla;
-		}	
+		}	*/
 	}
 ?>

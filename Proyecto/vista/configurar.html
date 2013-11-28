@@ -57,19 +57,31 @@
 				<form method="post" action="index.php?ctl=configurar" id="registro" name="registro">
 				<div id="contenedor" class="contenedor-mediano">
 					<h2 id="titulo">Configuración del Usuario</h2>
+					<br>
+					<div id="nom" class="linea">
+						<label for="nombre">Nombre(s):</label>
+						<input id="nombre" type="text" name="nombre" autocomplete="off" />
+						<div class="clear"></div>
+					</div>
+					<div id="ap" class="linea">
+						<label for="apellido">Apellidos:</label>
+						<input id="apellido" type="text" name="apellido" autocomplete="off" />
+						<div class="clear"></div>
+					</div>
+					<hr>
 					<div id="ac" class="linea">
 						<label for="actual">Contraseña actual:</label>
-						<input id="actual" type="password" name="actual" />
+						<input id="actual" type="password" name="actual" autocomplete="off" />
 						<div class="clear"></div>
 					</div>
 					<div id="nu" class="linea">
 						<label for="nueva">Nueva contraseña:</label>
-						<input id="nueva" type="password" name="nueva" />
+						<input id="nueva" type="password" name="nueva" autocomplete="off" />
 						<div class="clear"></div>
 					</div>
 					<div id="em" class="linea">
 						<label for="email">Email:</label>
-						<input id="email" type="email" name="email" value="{email_usuario}" />
+						<input id="email" type="email" name="email" value="{email_usuario}" autocomplete="off" />
 						<div class="clear"></div>
 					</div>
 						

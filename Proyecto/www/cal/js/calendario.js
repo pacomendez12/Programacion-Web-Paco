@@ -8,19 +8,18 @@ creaCalendario(fecha1);*/
 		creaCalendario(fechas[i]);
 	}
 })();
-
-
            
 function creaCalendario(entrada) {
 	new Calendar({
 	inputField: entrada,
 	dateFormat: "%d/%m/%Y",
 	trigger: entrada,
-	bottomBar: false,
+	bottomBar: true,
 	onSelect: function() {
 		var date = Calendar.intToDate(this.selection.get());
-		LEFT_CAL.args.min = date;
-		LEFT_CAL.redraw();
+		/*LEFT_CAL.args.min = date;
+		LEFT_CAL.redraw();*/
+		verificaFechaDiaFestivo(entrada.id.substring(5,entrada.id.length ));
 		this.hide();
 	}
 	});

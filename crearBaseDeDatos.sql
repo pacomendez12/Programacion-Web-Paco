@@ -66,6 +66,8 @@ create table profesor(codigo bigint auto_increment,
 	primary key(codigo)
 );
 
+alter table profesor AUTO_INCREMENT = 1000;
+
 create table evaluacion(id_evaluacion int auto_increment,
 	rubro varchar(15), calificacion double,
 	
@@ -85,7 +87,6 @@ create table rubro(id_rubro int auto_increment,
 
 create table columnas_hojas(id_columna int auto_increment,
 	columna varchar(25), 
-	
 	id_rubro int,
 	primary key(id_columna)
 );

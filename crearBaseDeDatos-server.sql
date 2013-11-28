@@ -62,6 +62,9 @@ create table profesor(codigo bigint auto_increment,
 	primary key(codigo)
 );
 
+alter table profesor AUTO_INCREMENT = 1000;
+
+
 create table evaluacion(id_evaluacion int auto_increment,
 	rubro varchar(15), calificacion double,
 	
