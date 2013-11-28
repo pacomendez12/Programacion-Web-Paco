@@ -169,7 +169,7 @@
 		}
 
 		function verificaExistenciaCiclo($nombre){
-			$query = "select * from ciclo_escolar where nombre='$nombre'";
+			$query = "select nombre from ciclo_escolar where nombre='$nombre'";
 			$res = $this->driver->query($query);
 			return ($res -> num_rows == 0)?false:true;
 		}

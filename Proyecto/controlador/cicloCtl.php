@@ -59,8 +59,6 @@
 								$nombre = trim($this->driver->real_escape_string($_GET["nombre"]));
 								if($this->modelo->verificaExistenciaCiclo($nombre)){
 									//cuando si existe el ciclo escolar
-									$this->modelo->SiguienteIdDiaFestivo();
-
 									$contenido = file_get_contents('vista/modificar_ciclo_escolar.html');
 									$inicio = strrpos($contenido,'<div class="dia-festivo" id="dia-festivo{id}">');
 									$fin = strrpos($contenido,'</div><div id="fin-dias"></div>')+6;
@@ -70,13 +68,13 @@
 									//exit();
 									$diasReemplazo = $this->modelo->obtendDiasFestivos($dia_vacio,$nombre);
 									$datosCiclo = $this->modelo->obtenDatosCiclo($nombre);
-
-									$array = array($dia_vacio =>  $diasReemplazo,
+									$array = array(
 										'{botones}' => self::obtenBotonesMenuSuperior('ciclo'),
 										'{nombre}' => $datosCiclo['nombre'],
 										'{fi}' => $datosCiclo['fecha_inicio'],
-										'{ff}' => $datosCiclo['fecha_fin']);
-
+										'{ff}' => $datosCiclo['fecha_fin'],
+										$dia_vacio =>  $diasReemplazo,);
+									
 									self::generarVista('modificar_ciclo_escolar.html','Modificación del ciclo escolar',$_SESSION['permisos'],$array);
 								}else{
 									//no existe el ciclo escolar indicado

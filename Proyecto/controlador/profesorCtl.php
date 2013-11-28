@@ -60,8 +60,8 @@
 					case 'listar':
 					if(empty($_POST)){
 						$resultado = $this->modelo->consulta(null);
-						//print_r($resultado);
-						if($resultado){
+					
+						if($resultado!==false){
 							$tabla = self::creaTabla("Lista de profesores");
 							$inicio_fila = strrpos($tabla,'<tr>');
 							$final_fila = strrpos($tabla,'</tr>') + 5;
@@ -128,9 +128,10 @@
 
 					break;
 				}
-			} else{
-				$mensaje = array('{mensaje}' => 'Se encontró un error con los datos proporcionados al servidor',
-						 	'{nombre_para_menu}' => $_SESSION['nombre']);
+			} else if(!isset($_SESSION['nombre'])){
+				header('Location: index.php');
+			}else{
+				$mensaje = array('{mensaje}' => 'Se encontró un error con los datos proporcionados al servidor');
 				self::generarVista('error.html','Error',0,$mensaje);
 			}
 		}
