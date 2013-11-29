@@ -41,6 +41,11 @@ if(isset($_GET["ctl"])) {
 			$ctl = new ProfesorCtl($driver);
 			break;
 		default:
+		case 'curso':
+			require_once("controlador/cursoCtl.php");
+			$ctl = new CursoCtl($driver);
+			break;
+		default:
 			//require_once("controlador/principalCtl.php");
 			//$ctl = new PrincipalCtl($driver);
 			header('location: index.php?ctl=login');

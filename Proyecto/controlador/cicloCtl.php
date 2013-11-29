@@ -127,13 +127,14 @@
 
 						self::generarVista('listar_ciclo_escolar.html','Lista de ciclos',1,$array);
 					break;
+
 					case 'clonar':
 						if(empty($_POST)){
 						/*	require_once("vista/registro.html");*/
 							$sust = $this->modelo->obtenCiclosParaSelect();
 							$array = array('{ciclos_option}' => $sust,
 								'{botones}' => self::obtenBotonesMenuSuperior('ciclo'));
-							self::generarVista('clonar_ciclo_escolar.html','Clonación de ciclo escolar',1,$array);
+							self::generarVista('clonar_ciclo_escolar.html','Clonación de ciclo escolar',$_SESSION['permisos'],$array);
 						}
 						 else {
 						 	/*obtener datos de POST*/

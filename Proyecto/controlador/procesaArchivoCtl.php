@@ -44,10 +44,10 @@
 					
 						self::generarVista('alumnosAgregados.html','Alumnos Agregados correctamente',$_SESSION['permisos'],$array);
 				}else{
-					$mensaje = array('{mensaje}' => 'El archivo no contiene el formato necesario para
+					$mensaje = array('{mensaje}' => '<p>El archivo no contiene el formato necesario para
 						poder ser procesado, recuerda que el formato debe ser:<br><br>
-						<strong>codigo,nombre,apellidos,contraseña,email,carrera,celular,github,pagina</strong><br>
-						en caso de no tener celular, github o pagina, recuerda dejar los espacio en blanco');
+						<strong>codigo,nombre,apellidos,contraseña, email,carrera,celular,github,pagina</strong><br>
+						en caso de no tener celular, github o pagina, recuerda dejar los espacio en blanco</p>');
 					self::generarVista('error.html','Error subiendo el archivo',0,$mensaje);
 				}
 			}

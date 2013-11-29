@@ -73,7 +73,7 @@
 					if(empty($_POST) && !isset($_GET['b'])){
 						$resultado = $this->modelo->consulta(null);
 						//print_r($resultado);
-						if($resultado){
+						if($resultado!==false){
 							$tabla = self::creaTabla("Lista de alumnos");
 							$inicio_fila = strrpos($tabla,'<tr>');
 							$final_fila = strrpos($tabla,'</tr>') + 5;
