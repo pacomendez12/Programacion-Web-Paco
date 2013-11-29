@@ -11,10 +11,10 @@ create table alumno(codigo bigint,
 );
 	
 create table curso(nrc int auto_increment,
-	
-	id_materia int,
+	nombre varchar(50),
 	nombre_ciclo_escolar varchar(6),
 	codigo_profesor bigint,
+	id_academia int,
 	primary key(nrc)
 	);
 
@@ -37,27 +37,22 @@ create table dias_de_suspension(id_dia int auto_increment,
 );
 
 create table academia(id_academia int,
-	nombre varchar(25),
+	nombre varchar(50),
 	primary key(id_academia)
 );
 
-create table materia(id_materia int auto_increment,
-	clave varchar(6),
-	nombre varchar(50),
-	id_academia int,
-	primary key(id_materia)
-);
-
 create table dias_clases(id_dia int auto_increment,
-	dia varchar(15), hora_inicio timestamp, hora_fin timestamp,
-	
+	dia varchar(15), hora_inicio int, hora_fin int,
 	nrc int,
 	primary key(id_dia)
 );
 
-create table asistencia(nrc int, codigo_alumno bigint,
-	fecha date, asistio boolean,
-	primary key(nrc,codigo_alumno)
+create table alumno_curso(id_a_c int, nrc int, codigo_alumno bigint,
+	primary key(id_a_c)
+);
+
+create table asistencia(id_asistencia int, fecha date,
+	id_a_c int,	primary key(id_asistencia)
 );
 
 create table profesor(codigo bigint auto_increment,
@@ -94,19 +89,12 @@ create table columnas_hojas(id_columna int auto_increment,
 
 --llaves foraneas
 --curso
-alter table curso add constraint  fk_curso_materia foreign key (id_materia) references  materia(id_materia);
+alter table curso add constraint  fk_curso_academia foreign key (id_academia) references  academia(id_academia);
 alter table curso add constraint  fk_curso_ciclo foreign key (nombre_ciclo_escolar) references  ciclo_escolar(nombre);
 alter table curso add constraint  fk_curso_profesor foreign key (codigo_profesor) references  profesor(codigo);
 
 --dias de suspension
 alter table dias_de_suspension add constraint  fk_dds_ciclo foreign key (nombre_ciclo_escolar) references  ciclo_escolar(nombre);
-
---materia
-alter table materia add constraint  fk_materia_academia foreign key (id_academia) references academia(id_academia);
-
---asistencia
-alter table asistencia add constraint  fk_asistencia_curso foreign key (nrc) references  curso(nrc);
-alter table asistencia add constraint  fk_asistencia_alumno foreign key (codigo_alumno) references  alumno(codigo);
 
 --evaluacion
 alter table evaluacion add constraint  fk_evaluacion_alumno foreign key (codigo_alumno) references  alumno(codigo);
@@ -116,12 +104,22 @@ alter table evaluacion add constraint  fk_evaluacion_rubro foreign key (id_rubro
 alter table rubro add constraint  fk_rubro_curso foreign key (nrc) references  curso(nrc);
 
 --columnas_hojas
-alter table columnas_hojas add constraint  fk_ch_rubro foreign key (id_rubro) references  rubro(id_rubro);
+alter table columnas_hojas add constraint  fk_ch_rubro foreign key (id_rubro) references rubro(id_rubro);
+
+--alumno_curso
+alter table alumno_curso add constraint fk_alumno_curso_curso foreign key (nrc) references curso(nrc);
+alter table alumno_curso add constraint fk_alumno_curso_alumno foreign key (codigo_alumno) references alumno(codigo);
+
+--asistencia
+alter table asistencia add constraint  fk_asistencia_alumno_curso foreign key (id_a_c) references alumno_curso(id_a_c);
+
+--dias_clases
+alter table dias_clases add constraint  fk_dias_clases_curso foreign key (nrc) references curso(nrc);
 
 
 --datos por default-----------------------------------------------------------------------------------------
 --administrador
-insert into administrador values(0,'admin','admin','d033e22ae348aeb5660fc2140aec35850c4da997','admin@admin.admin');
+insert into administrador values(1,'admin','admin','d033e22ae348aeb5660fc2140aec35850c4da997','admin@admin.admin');
 
 --academias
 insert into academia values(1,'Computación básica');
@@ -133,7 +131,10 @@ insert into academia values(6,'Sistemas Digitales');
 insert into academia values(7,'Software de Sistemas');
 insert into academia values(8,'Técnicas Modernas de Programación');
 
---materias
+--cursos no se pueden ingresar ya que para ello deben existir maestros al cual asignarle
+--el curso
+
+/*
 insert into materia values(default,'CC100','Introducción a la Computación','1');
 insert into materia values(default,'CC101','Taller de Introducción a la Computación','1');
 insert into materia values(default,'CC102','Introducción a la Programación','2');
@@ -258,4 +259,4 @@ insert into materia values(default,'I7040','Inteligencia Artificial II',null);
 insert into materia values(default,'I7041','Seminario de Solución de Problemas de Inteligencia Artificial II',null);
 insert into materia values(default,'I7042','Simulación por Computadora',null);
 insert into materia values(default,'I7609','Procesamiento de Bioimágenes',null);
-
+*/
