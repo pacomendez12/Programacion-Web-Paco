@@ -8,7 +8,6 @@ function nuevoDiaFestivo() {
 		dataType: 'json',
 		success: function(json){
 			json = parseInt(json);
-			alert(json);
 			if(json > 0){
 				sig = json; 	
 				var form = document.getElementById("contenedor");

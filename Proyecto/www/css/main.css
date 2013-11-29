@@ -815,6 +815,7 @@ aside#menu-izquierdo a:hover{
 	background-image: -ms-linear-gradient(center top , #C1444E, #8A242C);
 	background-image: linear-gradient(center top , #C1444E, #8A242C);		
 	visibility: visible;
+	z-index: 99;
 }
 
 .notificacionV{
@@ -840,6 +841,7 @@ aside#menu-izquierdo a:hover{
 	background-image: -ms-linear-gradient(center top , #225583, #2B7FC1);
 	background-image: linear-gradient(center top , #225583, #2B7FC1);		
 	visibility: visible;
+	z-index: 99;
 }
 
 .errorI{

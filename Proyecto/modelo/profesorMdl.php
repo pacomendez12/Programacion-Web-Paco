@@ -90,7 +90,7 @@ function consulta($buscado) {
 
 	$resultado = $this->driver->query($myquery);
 	
-
+	
 	if($resultado){
 		while($fila = $resultado->fetch_array(MYSQLI_ASSOC)){
 			$alumnos[] = $fila;

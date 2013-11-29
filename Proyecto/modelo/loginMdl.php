@@ -31,7 +31,8 @@
 					$query = 
 					"select * from alumno where 
 						codigo = \"$codigo\" and
-						contrasena =\"$contras\"			
+						contrasena =\"$contras\" and
+						status=1			
 					";
 				
 					$resultado = $this->driver->query($query);

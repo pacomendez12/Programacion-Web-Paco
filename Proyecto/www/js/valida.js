@@ -31,6 +31,16 @@ function validaFormularioRegistro() {
 	}
 }
 
+function validaArchivo(){
+	inp = document.getElementById('archivo');
+	if(inp.value==''){
+		muestraError(inp,"Selecciona una archivo a subir");
+		return 0;
+	}else{
+		document.getElementById("formulario").submit();
+	}
+}
+
 function validaFormularioNuevoMaestro(){
 	var form = document.getElementById("registro");
 	

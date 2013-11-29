@@ -93,6 +93,7 @@
 
 					}else{
 						$busqueda = trim($this->driver->real_escape_string($_POST["busqueda"]));
+						unset($_POST);
 						$resultado = $this->modelo->consulta($busqueda);
 						//print_r($resultado);
 						if($resultado!==false){

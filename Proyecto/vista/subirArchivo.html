@@ -54,12 +54,14 @@
 				<a href="#"><img src="www/img/engrane.png" alt="engrane" title="Configuración" width="40" /></a>
 			</aside>
 			<section id="contenido" class="cbl">
-				<form method="post" action="index.php?ctl=upload&acc=subir" name="archivo" enctype="multipart/form-data">
+				<form method="post" action="index.php?ctl=alumno&acc=cargar" name="archivo" enctype="multipart/form-data" id="formulario" name="formulario">
 				<div id="contenedor" class="contenedor-mediano">
 					<h2 id="titulo">Archivo para registro de alumnos</h2>
 					<h5>Selecciona el archivo de donde se obtendrán los datos (recuerda que debe ser un archivo separado por comas)</h5>
-					<input type="file" name="archivo" />
-					<button id="btn" class="boton" type="submit" onclick="">subir</button>
+					<div id="fil" class="linea">
+						<input class='fuente-centro' type="file" name="archivo" id="archivo" />
+					</div>
+					<button id="btn" class="boton" type="button" onclick="validaArchivo()">subir</button>
 					<div class="clear"></div>
 					
 				</div>

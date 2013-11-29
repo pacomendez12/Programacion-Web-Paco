@@ -64,7 +64,7 @@
 				}
 			} else if($_GET['acc'] == 'out') {
 				/*desloguear*/
-				session_start();
+				//session_start();
 				session_unset();
 				session_destroy();
 				setcookie(session_name(),'',time()-3600);
