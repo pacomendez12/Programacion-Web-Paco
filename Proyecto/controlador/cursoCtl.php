@@ -38,6 +38,7 @@
 						 	$maestro = $_SESSION['codigo'];
 						 	$maestroNombre = $_SESSION['nombre'];
 
+						 	echo "dias: ".$dias;
 
 
 						 	if($ciclo ==='' || $nombre === '' || $academia === '' ||

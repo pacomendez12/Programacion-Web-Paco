@@ -184,9 +184,50 @@ function validaClonarCiclo(){
 	}
 }
 
+function validaNuevoCurso(){
+	var form = document.getElementById("formulario");
+	var dias='';
+	var d = $("input:checkbox:checked");
+	$("input:checkbox:checked").each(function(){
+		dias+=$(this).val()+','
+	});
+	form.dias.value = dias;
+	var hia = form.hi.value.split(':');
+	var hi = parseInt(hia[0]);
+	var hfa = form.hf.value.split(':');
+	var hf = parseInt(hfa[0]);
+	
+	if (trim(form.nombre.value)=='') {
+		muestraError(form.nombre,"Ingresa el nombre del curso");
+		return 0;
+	}else if (form.academia.value=='' || form.academia.value=='Selecciona una academia') {
+		muestraError(form.academia,'Selecciona la academia a la que pertenecerá el curso');
+		return 0;
+	}else if (form.ciclo.value=='' || form.ciclo.value=='Selecciona un ciclo') {
+		muestraError(form.ciclo,'Selecciona el ciclo escolar');
+		return 0;
+	}else if(d.length <= 0) {
+		muestraError(form.ciclo,'Debes seleccionar por lo menos un día');
+		return 0;
+	}else if(hi>= hf) {
+		muestraError(form.ciclo,'La hora de inicio debe ser inferior a la de fin');
+		return 0;
+	}else{
+		form.submit();
+	}
+}
+
 
 
 /*axiliares---------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+
 
 function muestraError(elemento,cadena) {
 	var error = document.getElementById("error");

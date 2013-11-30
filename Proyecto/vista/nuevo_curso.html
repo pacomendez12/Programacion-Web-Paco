@@ -62,31 +62,32 @@
 				<a href="#"><img src="www/img/engrane.png" alt="engrane" title="Configuración" width="40" /></a>
 			</aside>
 			<section id="contenido" class="cbl">
-				<form method="post" action="">
+				<form method="post" action="index.php?ctl=curso&acc=alta" id="formulario" if="formulario">
 				<div id="contenedor" class="contenedor-mediano">
-					<h2 id="titulo">Registro de nuevo curso</h2>
+					<h2 id="titulo">Nuevo Curso</h2>
 					<div id="nom" class="linea">
 						<label for="nombre">Nombre:</label>
-						<input id="nombre" type="text" required />
+						<input id="nombre" type="text" name="nombre" />
 						<div class="clear"></div>
 					</div>
 					
-					<div id="sec" class="linea">
-						<label for="seccion">Sección:</label>
-						<input id="seccion" type="text" required />
-						<div class="clear"></div>	
-					</div>
-					<div id="nr" class="linea">
-						<label for="nrc">NRC:</label>
-						<input id="nrc" type="text" required />
-						<div class="clear"></div>
-					</div>
-					<div id="aca"  class="linea">
+					<div id="aca" class="linea">
 						<label for="academia">Academia:</label>
-						<input id="academia" type="text" required />
+						<select id="academia" type="text" name="academia" style="width:53%;" >
+							<option value="">Selecciona una academia</option>
+							{academias_option}
+						</select>
 						<div class="clear"></div>
 					</div>
-					
+					<div id="ci" class="linea">
+						<label for="ciclo">Ciclo:</label>
+						<select id="ciclo" type="text" name="ciclo" style="width:53%;" >
+							<option value="">Selecciona un ciclo</option>
+							{ciclos_option}
+						</select>
+						<div class="clear"></div>
+					</div>
+					<hr>
 					<div id="di" class="linea">
 						<label>Días de clase:	</label>
 						<span class="textoCheck" style="margin-left: 0px">L</span>
@@ -103,20 +104,51 @@
 						<input type="checkbox" value="S" />
 						<div class="clear"></div>
 					</div>
-					<div id="hpd"  class="linea">
-						<label for="horaspordia">Horas por día:</label>
-						<input id="horaspordia" type="text" required style="width:10%;"/>
+					<div id="hid"  class="linea">
+						<label for="hi">Hora de inicio:</label>
+						<select id="hi" type="text" name="hi" style="width:35%;" >
+							<option value='7:00'>7:00</option>
+							<option value='8:00'>8:00</option>
+							<option value='9:00'>9:00</option>
+							<option value='10:00'>10:00</option>
+							<option value='11:00'>11:00</option>
+							<option value='12:00'>12:00</option>
+							<option value='13:00'>13:00</option>
+							<option value='14:00'>14:00</option>
+							<option value='15:00'>15:00</option>
+							<option value='16:00'>16:00</option>
+							<option value='17:00'>17:00</option>
+							<option value='18:00'>18:00</option>
+							<option value='19:00'>19:00</option>
+						</select>
 						<div class="clear"></div>
 					</div>	
-					<button id="btn" class="boton" type="submit">Registrar</button>
+					<div id="hfd"  class="linea">
+						<label for="hf">Hora de fin:</label>
+						<select id="hf" type="text" name="hf" style="width:35%;" >
+							<option value='7:00'>7:00</option>
+							<option value='8:00'>8:00</option>
+							<option value='9:00'>9:00</option>
+							<option value='10:00'>10:00</option>
+							<option value='11:00'>11:00</option>
+							<option value='12:00'>12:00</option>
+							<option value='13:00'>13:00</option>
+							<option value='14:00'>14:00</option>
+							<option value='15:00'>15:00</option>
+							<option value='16:00'>16:00</option>
+							<option value='17:00'>17:00</option>
+							<option value='18:00'>18:00</option>
+							<option value='19:00'>19:00</option>
+						</select>
+						<div class="clear"></div>
+					</div>	
+					<button id="btn" class="boton" type="button" onclick="validaNuevoCurso()">Crear</button>
 					<div class="clear"></div>
-					
 				</div>
+				<input type="hidden" id="dias" name="dias" />
 				</form>
-
 			</section>
 			<div class="clear"></div>
-
 			<footer class="espacio"><span>&copy; 2013 Todos los derechos reservados - Francisco de Jesús Méndez Pelayo</span></footer>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
@@ -130,9 +162,5 @@
             g.src='//www.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
-
-
-      
-
     </body>
 </html>
