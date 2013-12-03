@@ -1,0 +1,80 @@
+			<section id="contenido" class="cbl">
+				<form method="post" action="index.php?ctl=curso&acc=ver&nrc={nrc}" id="configurar" name="configurar">
+				<div id="contenedor" class="contenedor-mediano">
+					<input type="hidden" name="modificado" value="{nombre}" />
+					<h2 id="titulo">Evaluación del curso</h2>
+
+					<div class="linea"><p>Ingrese los rubros de evaluación para el curso</p></div>
+
+					
+					<div style="display:none;" class="rubroEvaluacion dia-festivo" id="rubroEvaluacion">
+						<div  class="close" onclick="eliminaRubroEvaluacion(document.getElementById('rubroEvaluacion'))"><img src="www/img/cerrar.png" alt="cerrar" width="15" />
+						</div>
+
+						<div class="linea">							
+							<label class="opt" for="rubro">Rubro: </label>
+							<input class="rubro" id="rubro" type="text" name="rubro" value="" />
+							<div class="clear"></div>
+						</div>	
+						<div class="linea">
+							<label class="opt" for="porcentaje">Porcentaje:</label>
+							<select class="porcentaje" id="porcentaje" name="porcentaje" style="width:15%;" >
+								<option value='5'>5%</option>
+								<option value='10'>10%</option>
+								<option value='15'>15%</option>
+								<option value='20'>20%</option>
+								<option value='25'>25%</option>
+								<option value='30'>30%</option>
+								<option value='35'>35%</option>
+								<option value='40'>40%</option>
+								<option value='45'>45%</option>
+								<option value='50'>50%</option>
+								<option value='55'>55%</option>
+								<option value='60'>60%</option>
+								<option value='65'>65%</option>
+								<option value='70'>70%</option>
+								<option value='75'>75%</option>
+								<option value='80'>80%</option>
+								<option value='85'>85%</option>
+								<option value='90'>90%</option>
+								<option value='95'>95%</option>
+								<option value='100'>100%</option>
+							</select>
+						<div class="clear"></div>
+					</div>			
+						<div class="linea">
+							<label class="opt" for="he">Hoja extra:	</label>
+							<input class="he" id="he1"  type="checkbox" name="he" value="" onclick="activaHojasExtra()" />
+							<div class="clear"></div>
+						</div>
+						<div style="display:none;" id="hojaExtra1">
+							<hr>
+							<div class="linea">							
+								<label class="opt" for="porcentaje">Columna: </label>
+								<input class="porcentajeHe" id="porcentaje" type="text" name="porcentaje" value="" />
+								<div class="clear"></div>
+							</div>
+							<div class="linea">							
+								<label class="opt" for="columna">Porcentaje: </label>
+								<input class="input-mini columna" id="columna" type="text" name="columna" value="" />
+								<span>%</span>
+								<div class="clear"></div>
+							</div>
+							<div id="fin-dias"></div>
+							<button id="btn" class="boton-mini" type="button" onclick="nuevoDiaFestivo()">Nueva Columna</button>
+							<div class="clear"></div>
+							<br>
+						</div>
+					</div><div id="fin-rubro"></div>
+
+
+					<button id="btn" class="boton-mini" type="button" onclick="nuevoRubroEvaluacion()">Nuevo Rubro</button>
+
+					<div class="clear"></div>
+					<button id="btn" class="boton" type="button" onclick="validaConfiguracionEvaluacion()">Guardar</button>
+					<div class="clear"></div>
+
+				</div>
+				</form>	
+			</section>
+			<div class="clear"></div>

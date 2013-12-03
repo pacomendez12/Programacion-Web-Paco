@@ -82,8 +82,9 @@ function listar($lineaHtml){
 			$codigo_maestro = $_SESSION['codigo'];
 			$final = '';
 			$query = "select nrc,nombre from curso where codigo_profesor='$codigo_maestro' order by nombre";
-			$url1 = "index.php?ctl=curso&acc=modificar&nrc=";
+			$url1 = "index.php?ctl=curso&acc=configurar&nrc=";
 			$url2 = "index.php?ctl=curso&acc=ver&nrc=";
+			$url3 = "index.php?ctl=curso&acc=inscribir&nrc=";
 			$resultado = $this->driver->query($query);
 			if($resultado){
 				$it = 1;
@@ -91,8 +92,9 @@ function listar($lineaHtml){
 					if($fila['nombre']!='elimi'){
 						$final.=$lineaHtml;
 						$final = str_replace('{nombre_curso}', $it.' - '.$fila['nombre'], $final);
-						$final = str_replace('{url-modificar}', $url1.$fila['nrc'], $final);
+						$final = str_replace('{url-configurar}', $url1.$fila['nrc'], $final);
 						$final = str_replace('{url-curso}', $url2.$fila['nrc'], $final);
+						$final = str_replace('{url-inscribir}', $url3.$fila['nrc'], $final);
 						$it++;
 					}
 				}
@@ -185,6 +187,56 @@ function diaALetra($dia){
 			return "S";
 			break;
 	}
+}
+
+function obtenDiasLaborales($curso){
+	$query = "select nombre_ciclo_escolar from curso where nrc='$curso'";
+	$res = $this->driver->query($query);
+	$fechas = $res->fetch_array(MYSQLI_ASSOC);
+	$ciclo = $fechas['nombre_ciclo_escolar'];
+	$query = "select * from ciclo_escolar where nombre='$ciclo'";
+	$res = $this->driver->query($query);
+	$fechas = $res->fetch_array(MYSQLI_ASSOC);
+	$fechaInicio = $fechas['fecha_inicio'];
+	$fechaFin = $fechas['fecha_fin'];
+
+	$query = "select dia from dias_clases where nrc=$curso";
+	$res = $this->driver->query($query);
+	$diasLaborales = $res->fetch_array(MYSQLI_ASSOC);
+
+
+	$query = "select * from dias_de_suspension
+		where nombre_ciclo_escolar=
+			'$ciclo' and 
+			fecha > '$fechaInicio' and 
+			fecha < '$fechaFin'";
+	$res = $this->driver->query($query);
+	if($res){
+		while($fila = $res->fetch_array(MYSQLI_ASSOC)){
+			foreach ($diasLaborales as $d) {
+				if(false){
+					$dias[] = $fila;
+				}	
+			}
+		}
+	}
+
+}
+
+
+
+function invierteFecha($fecha){
+	$fi_t = explode('/', $fecha);
+	$fi=$fi_t[2].'/'.$fi_t[1].'/'.$fi_t[0];
+	return $fi;
+}
+
+function nameDate($fecha='')//formato: 00/00/0000
+{ 	
+	date_default_timezone_set("America/Mexico_City");
+	$dias = array('Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo');
+	$fecha = $dias[date('N', strtotime($fecha))];
+	return $fecha;
 }
 
 }

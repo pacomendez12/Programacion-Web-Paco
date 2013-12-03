@@ -94,49 +94,100 @@
 
 						self::generarVista('listar_curso.html','Lista de los cursos',$_SESSION['permisos'],$array);
 					break;
-					case 'eliminar':
-						if(isset($_GET['codigo'])){
-							$codigo = trim($this->driver->real_escape_string($_GET["codigo"]));
-							$resultado = $this->modelo->eliminar($codigo);
+					case 'configurar':
+						if(isset($_GET['nrc'])){
+							if(empty($_POST)){
+								$array = array('{nombre_para_menu}' => $_SESSION['nombre'],
+									'{botones}'=> '',
+									);
+								self::generarVista('configurarEvaluacionCurso.html','Configuración de la evaluación del curso',$_SESSION['permisos'],$array);
+							}
 
-							if($resultado !== false){
+
+/*
+							$codigo = trim($this->driver->real_escape_string($_GET["codigo"]));
+							$resultado = $this->modelo->eliminar($codigo); 
+							*/
+
+							/*if($resultado !== false){
 								if(isset($_GET['b']))
-									header('Location: index.php?ctl=alumno&acc=listar&b='.$_GET['b']);
+									header('Location: index.php?ctl=curso&acc=listar&b='.$_GET['b']);
 								else
-									header('Location: index.php?ctl=alumno&acc=listar');
+									header('Location: index.php?ctl=curso&acc=listar');
 								
 							}else{
 								$mensaje = array('{mensaje}' => 'Erro en la conexión a la base de datos');
 								self::generarVista('error.html','Error de base de datos',0,$mensaje);
-							}
+							}*/
 						}else{
 							//si no se especifica el código a eliminar
-							header('Location: index.php?ctl=alumno&acc=listar');
+							header('Location: index.php?ctl=curso&acc=listar');
 						}
 
 					break;
-					case 'cargar':
-					if(empty($_FILES)){
-						/*	require_once("vista/registro.html");*/
-						$array = array('{nombre_para_menu}' => $_SESSION['nombre'],
-							'{botones}'=> self::obtenBotonesMenuSuperior('alumno'));
-						self::generarVista('subirArchivo.html','Cargar alumnos desde archivo externo',$_SESSION['permisos'],$array);
-					}else{
-						$resultado = $this->modelo->subir();
-						if($resultado !== false){
-							//self::generarVista('ArchivoSubido.html',true);
-							$NOMBRE_ARCHIVO = $_FILES['archivo']['name'];
-							
-							require_once("controlador/procesaArchivoCtl.php");
-							$ctl = new ProcesaArchivoCtl($this->driver);
-							$ctl->ejecutar($NOMBRE_ARCHIVO);
-							unset($_FILES);
-						}else{
-							$mensaje = array('{mensaje}' => 'No se pudo subir el archivo, es posible que el tamaño exceda los límites del servidor');
-							self::generarVista('error.html','Error subiendo el archivo',0,$mensaje);
-						}
-					}
 
+					case "ver":
+						if(empty($_POST)){
+							$dias = $this->modelo->obtenDiasLaborales($_GET['nrc']);
+							$array = array('{nombre_para_menu}' => $_SESSION['nombre'],
+								'{botones}'=> '',
+								);
+							self::generarVista('asistencia.html','Asistencia del curso',$_SESSION['permisos'],$array);
+						}
+						 else {
+						 	/*obtener datos de POST*/
+						 	//$codigo = $driver->real_escape_string($_POST["codigo"]);*/
+						 	$nombre = trim($this->driver->real_escape_string($_POST["nombre"]));
+						 	$academia = trim($this->driver->real_escape_string($_POST["academia"]));
+						 	$ciclo = trim($this->driver->real_escape_string($_POST['ciclo']));
+						 	$dias = trim($this->driver->real_escape_string($_POST['dias']));
+						 	$hi = trim($this->driver->real_escape_string($_POST['hi']));
+						 	$hf = trim($this->driver->real_escape_string($_POST['hf']));
+						 	$maestro = $_SESSION['codigo'];
+						 	$maestroNombre = $_SESSION['nombre'];
+
+						 	echo "dias: ".$dias;
+
+
+						 	if($ciclo ==='' || $nombre === '' || $academia === '' ||
+						 		$hi === '' || $hf === '' || $dias === ''){
+						 		$mensaje = array('{mensaje}' => 'Se encontró un error con los datos proporcionados al servidor, esto normalmente se debe a un intento ilegal de acceso a la base de datos',
+						 			'{nombre_para_menu}' => $_SESSION['nombre']);
+						 		self::generarVista('error.html','Error de datos',0,$mensaje);
+						 		exit();
+						 	}
+
+						 	//limpiamos post
+						 	$_POST = array();
+						 	unset($_POST);
+
+						 	//convertimos los dias en arreglo
+						 	$dias = explode(',', $dias);
+						 	//eliminamos el ultimo valor que en realidad es
+						 	//un espacio en blanco
+						 	unset($dias[count($dias) - 1]);
+							
+						 	//se guarda el curso en la base de datos
+							$resultado = $this->modelo->alta($nombre,$academia, $ciclo,
+								$dias,$hi,$hf,$maestro);
+							$datos = "<div><p><strong>Nombre: </strong>$nombre<br>
+							<strong>Ciclo: </strong>$ciclo<br>
+							<strong>Profesor: </strong>$maestroNombre<br></p>
+							</div>";
+
+							if($resultado !== false){
+								$valores = array('{nombre}' => $nombre, '{datos}' => $datos,
+									'{nrc}' => $resultado,
+									'{nombre_para_menu}' => $_SESSION['nombre'],
+									'{botones}' => self::obtenBotonesMenuSuperior('curso')
+									);
+								self::generarVista('cursoAgregado.html','Alumno Agregado',$_SESSION['permisos'],$valores);
+							}else{
+								$mensaje = array('{mensaje}' => 'Hubo un problema al guardar el curso en la base de datos, intente nuevamente, si el problema continua le pedimos contacte al administrador del sistema');
+						 		self::generarVista('error.html','Error de base de datos',0,$mensaje);
+						 		exit();
+							}
+						}
 					break;
 				}
 			}else if(!isset($_SESSION['codigo'])){

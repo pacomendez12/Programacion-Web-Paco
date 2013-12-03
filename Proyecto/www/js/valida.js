@@ -218,6 +218,57 @@ function validaNuevoCurso(){
 }
 
 
+contadorEvaluaciones = 1;
+
+
+function validaConfiguracionEvaluacion(){
+
+
+}
+
+function activaHojasExtra(){
+	var capa = document.getElementById("hojaExtra1");
+	var ch = document.getElementById("he1");
+	if(ch.checked)
+		capa.setAttribute("style","display:block;");
+	else
+		capa.setAttribute("style","display:none;");
+
+
+}
+
+function eliminaRubroEvaluacion(rubro){
+	document.getElementById('contenedor').removeChild(rubro);
+	contadorEvaluaciones--;
+}
+
+function nuevoRubroEvaluacion(){
+	var contenedor = document.getElementById("contenedor");
+	var original = document.getElementById("rubroEvaluacion");
+	var ultimo = document.getElementById("fin-rubro");
+	var rubro = original.cloneNode(true);
+	rubro.setAttribute("style",'');
+	rubro.setAttribute("id",'rubroEvaluacion'+contadorEvaluaciones);
+	var close = rubro.childNodes[0].nextSibling;
+	var label = close.nextSibling.nextSibling.childNodes[0].nextSibling;
+	var inputRubro = close.nextSibling.nextSibling.childNodes[2].nextSibling;
+	label.setAttribute("for","rubro"+contadorEvaluaciones);
+	inputRubro.setAttribute("id","rubro"+contadorEvaluaciones);
+	inputRubro.setAttribute("name","rubro"+contadorEvaluaciones);
+	label.setAttribute("for","porcentaje"+contadorEvaluaciones);
+	var divPorcentaje = rubro.childNodes[4].nextSibling;
+	label = divPorcentaje.childNodes[0].nextSibling;
+	label.setAttribute("for","porcentaje"+contadorEvaluaciones);
+	var select = divPorcentaje.childNodes[2].nextSibling;
+	select.setAttribute("id","porcentaje"+contadorEvaluaciones);
+	select.setAttribute("name","porcentaje"+contadorEvaluaciones);
+
+
+	close.setAttribute("onclick","eliminaRubroEvaluacion(document.getElementById('rubroEvaluacion"+contadorEvaluaciones+"'))");
+	contenedor.insertBefore(rubro,ultimo);
+	contadorEvaluaciones++;
+}
+
 
 /*axiliares---------------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------------*/
@@ -312,3 +363,4 @@ function trim(myString)
 	return myString.replace(/^\s+/g,'').replace(/\s+$/g,'');
 	/*return this.replace(/^\s+|\s+$/g, '');*/
 }
+
